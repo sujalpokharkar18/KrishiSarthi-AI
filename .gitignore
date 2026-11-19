@@ -1,0 +1,44 @@
+# Android Studio & Gradle
+.gradle/
+build/
+app/build/
+**/android_app/app/build/
+**/android_app/.gradle/
+**/build/
+local.properties
+*.apk
+*.ap_
+*.aab
+*.dex
+.navigation/
+
+# IDE & Editor files
+.idea/
+*.iml
+.vscode/
+*.swp
+*~
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+.pytest_cache/
+
+# Large binaries & Executables
+*.exe
+cloudflared.exe
+*.dll
+
+# Logs & OS artifacts
+*.log
+Thumbs.db
+Desktop.ini
+~$*
+extracted_assets/

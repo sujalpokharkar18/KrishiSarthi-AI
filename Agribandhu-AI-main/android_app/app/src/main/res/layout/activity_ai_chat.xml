@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/green_backgroung"
+    tools:context=".Ai_chat">
+
+    <!-- Top App Bar / Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/chatToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/green"
+        android:elevation="4dp"
+        app:title="KrishiSarthi AI Assistant"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/backarrow" />
+
+    <!-- Chat Conversation / Response Area -->
+    <ScrollView
+        android:id="@+id/chatScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="12dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Message Card Container -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/tvResponse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="👋 Namaste! I am your KrishiSarthi AI Assistant.\n\nYou can ask me any question about crops, fertilizers, pest control, or attach a photo of a sick plant/leaf to diagnose diseases and get treatment advice."
+                    android:textColor="#1B5E20"
+                    android:textSize="15sp"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="16dp" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Attached Image Thumbnail Card (Visible when photo is attached) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layoutAttachedImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        app:cardBackgroundColor="#E8F5E9"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivAttachedThumbnail"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:scaleType="centerCrop"
+                android:background="#CCCCCC"
+                android:contentDescription="Crop photo preview" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="4dp">
+
+                <TextView
+                    android:id="@+id/tvAttachedTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📷 Crop Photo Attached"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:textColor="#2E7D32" />
+
+                <TextView
+                    android:id="@+id/tvAttachedSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tap Ask to diagnose or ask questions about this leaf."
+                    android:textSize="11sp"
+                    android:textColor="#666666" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnRemoveAttachment"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:tint="#D32F2F"
+                android:contentDescription="Remove photo" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Bottom Input Controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:elevation="6dp">
+
+        <!-- Attach Photo Button -->
+        <ImageButton
+            android:id="@+id/btnAttachPhoto"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_camera"
+            android:tint="@color/green"
+            android:contentDescription="Attach Crop Photo"
+            android:layout_marginEnd="4dp" />
+
+        <!-- User Prompt Field -->
+        <EditText
+            android:id="@+id/etPrompt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="44dp"
+            android:maxLines="4"
+            android:background="@drawable/editetextfield"
+            android:textColor="#000000"
+            android:textColorHint="#757575"
+            android:hint="Ask crop question or describe symptoms..."
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            android:textSize="14sp" />
+
+        <!-- Send Button -->
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginStart="6dp"
+            android:backgroundTint="@color/green"
+            android:text="Ask AI"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

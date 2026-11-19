@@ -1,0 +1,17 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Community post images
+    match /posts/{userEmail}/{fileName} {
+      // Anyone authenticated can view community post images
+      allow read: if request.auth != null;
+      
+      // Only authenticated users can upload images, restricted to image formats and <= 5MB
+      allow write: if request.auth != null
+                   && request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+  }
+}

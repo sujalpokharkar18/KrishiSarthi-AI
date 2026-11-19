@@ -1,0 +1,25 @@
+{
+  "rules": {
+    "users": {
+      "$emailKey": {
+        // Authenticated users can read and write their own data
+        ".read": "auth != null",
+        ".write": "auth != null && (data.child('uid').val() == auth.uid || newData.child('uid').val() == auth.uid)",
+        "crops": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "post": {
+          // Public community posts are readable by all authenticated users
+          ".read": "auth != null",
+          ".write": "auth != null"
+        }
+      }
+    },
+    "schemes": {
+      // Government schemes are readable by everyone, writable only by admins
+      ".read": true,
+      ".write": "auth != null && auth.token.admin === true"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2ffd8"
+    android:orientation="vertical"
+    tools:context=".scheme_actitvy">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:elevation="6dp"
+        app:title="Government Schemes"
+        app:titleTextColor="@android:color/holo_green_dark"
+        app:navigationIcon="@drawable/backarrow" />
+
+    <!-- Search Section -->
+    <LinearLayout
+        android:id="@+id/searchSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search agricultural schemes by announcement date or browse all active initiatives."
+            android:textColor="#555555"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/editTextdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Filter by Date (e.g. 2026-09-03) or leave blank"
+            android:padding="14dp"
+            android:textColor="#333333"
+            android:textColorHint="#888888"
+            android:background="@drawable/editetextfield"
+            android:inputType="text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btnfetchscheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Search Date"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:textColor="@android:color/white"
+                android:layout_marginEnd="6dp" />
+
+            <Button
+                android:id="@+id/btnViewAllSchemes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Browse All"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:backgroundTint="#388E3C"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/schemeProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- Scrollable container for cards -->
+    <ScrollView
+        android:id="@+id/scrollSchemes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:id="@+id/schemeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp" />
+    </ScrollView>
+
+</LinearLayout>

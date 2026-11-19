@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/green_backgroung"
+    tools:context=".post">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/green"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:elevation="4dp"
+        app:title="Crop Photo &amp; AI Diagnosis"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/backarrow" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Photo Preview Card -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@drawable/card_bg"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:id="@+id/imagePreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/app_icon" />
+
+                <TextView
+                    android:id="@+id/tvSelectHint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tap below to select photo"
+                    android:textColor="#888"
+                    android:textSize="13sp"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+            <!-- Image Selection Button -->
+            <Button
+                android:id="@+id/selectImageBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📷 Select Crop / Leaf Photo"
+                android:backgroundTint="#4CAF50"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="12dp"
+                android:elevation="3dp" />
+
+            <!-- 🔬 AI Crop Diagnosis Action Button -->
+            <Button
+                android:id="@+id/btnDiagnosePhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔬 Ask AI to Diagnose Disease in This Photo"
+                android:backgroundTint="#1976D2"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:elevation="4dp" />
+
+            <!-- 🤖 AI Diagnosis Result Card -->
+            <LinearLayout
+                android:id="@+id/layoutAiDiagnosis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg"
+                android:padding="14dp"
+                android:layout_marginTop="12dp"
+                android:elevation="4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvDiagnosisTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🩺 Disease Diagnosis Report"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#1976D2" />
+
+                <TextView
+                    android:id="@+id/tvDiagnosisResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Analysis will appear here..."
+                    android:textSize="14sp"
+                    android:textColor="#222"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_marginTop="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <Button
+                        android:id="@+id/btnApplyToDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="📝 Copy to Post"
+                        android:textSize="12sp"
+                        android:backgroundTint="#388E3C"
+                        android:textColor="@android:color/white"
+                        android:layout_marginEnd="6dp" />
+
+                    <Button
+                        android:id="@+id/btnChatAboutDisease"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="💬 Talk to AI Chatbot"
+                        android:textSize="12sp"
+                        android:backgroundTint="#1976D2"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="6dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Description Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post Description / Notes:"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#222"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Post Description Box (Fixed: Jet black text on white styled field) -->
+            <EditText
+                android:id="@+id/postDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="3"
+                android:gravity="top|start"
+                android:background="@drawable/editetextfield"
+                android:textColor="#000000"
+                android:textColorHint="#666666"
+                android:hint="Type details about this crop, symptoms, or question for community..."
+                android:padding="14dp"
+                android:textSize="15sp"
+                android:elevation="2dp" />
+
+            <!-- Upload to Community Feed Button -->
+            <Button
+                android:id="@+id/uploadPostBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/green"
+                android:text="📤 Share to Farmer Community"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:elevation="4dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="24dp" />
+
+            <ProgressBar
+                android:id="@+id/uploadProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
